@@ -1,0 +1,16 @@
+{
+  "name": "serverside",
+  "version": "1.0.0",
+  "description": "Node.js project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-server-script": "node app.js"
+  },
+  "author": "Akash Ranjan",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
