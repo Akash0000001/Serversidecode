@@ -6,8 +6,8 @@ const shop = require ("./routes/shop")
 
 const app= express()
 app.use(bodyparser.urlencoded({extended:false}))
-app.use(admin)
-app.use(shop)
+app.use("/admin",admin)
+app.use("/shop",shop)
 app.use((req,res,next)=>{
     res.status(404).send("<h1>Page Not Found </h1>")
 })

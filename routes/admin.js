@@ -3,12 +3,12 @@ const express = require("express");
 const routes = express.Router();
 
 routes.get("/add-product",(req,res,next)=>{
-    res.send("<form action='/product' method='post'><label>Enter product name:</label><input type='text' name='product'></input><label>Number of products:</label><input type='number' name='size'></input><button type='submit'>Send</button></form>")
+    res.send("<form action='/admin/add-product' method='post'><label>Enter product name:</label><input type='text' name='product'></input><label>Number of products:</label><input type='number' name='size'></input><button type='submit'>Send</button></form>")
 })
 
-routes.post("/product",(req,res,next)=>{
+routes.post("/add-product",(req,res,next)=>{
     console.log(req.body);
-    res.redirect("/");
+    res.redirect("/shop");
 })
 
 module.exports=routes
