@@ -7,6 +7,7 @@ const shop = require ("./routes/shop")
 const  contact =require("./routes/contact")
 const success=require("./routes/success")
 const rootDir=require("./util/path")
+const errorcontroller=require("./controllers/error")
 
 const app= express()
 app.use(bodyparser.urlencoded({extended:false}))
@@ -15,9 +16,7 @@ app.use("/admin",admin)
 app.use("/shop",shop)
 app.use("/contactus",contact)
 app.use("/success",success)
-app.use((req,res,next)=>{
-    res.status(404).sendFile(path.join(rootDir,"views","404.html")) 
-})
+app.use(errorcontroller)
 
 
 app.listen(3000)
