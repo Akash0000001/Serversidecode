@@ -1,0 +1,48 @@
+.container{
+    border:1px solid orange;
+    width:22rem;
+    margin:50px auto;
+}
+h3{
+    text-align: center;
+    color:#bb4545f6
+}
+p
+{
+    font-size: 10px;
+    text-align: center;
+}
+.contact-form{
+    width:20rem;
+    max-width: 90%;
+    margin:2px 14px;
+}
+.form-control{
+    margin:1rem 0;
+}
+.form-control input,
+.form-control,label{
+    display:block;
+
+}
+.form-control input{
+    border:1px solid grey;
+    font:inherit;
+    border-radius: 2px;
+    width:100%;
+    margin:5px 0;
+}
+button{
+    width:100%;
+    font:inherit;
+    border: 1px solid #c42929c5;
+    color:white;
+    background:#c42929c5;
+    border-radius:3px;
+    cursor: pointer;
+}
+button:hover,
+button:active{
+    background-color: blue;
+    color:white;
+}
