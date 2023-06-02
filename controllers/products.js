@@ -19,7 +19,7 @@ exports.postaddproduct=(req,res,next)=>{
 }
 
 exports.listproducts=(req,res,next)=>{
-    const products=product.fetchall()
+    product.fetchall(products=>{
         res.render('shop', {
           prods: products,
           pageTitle: 'Shop',
@@ -28,4 +28,5 @@ exports.listproducts=(req,res,next)=>{
           activeShop: true,
           productCSS: true
         });
-      }
+      })
+}

@@ -3,5 +3,5 @@ const routes = express.Router();
 
 const successcontroller=require("../controllers/success")
 
-routes.post("/",successcontroller)
+routes.get("/",successcontroller)
 module.exports=routes

@@ -1,4 +1,19 @@
-const contacts =[];
+const rootDir=require("../util/path")
+const path=require("path")
+const p=path.join(rootDir,"data","contact.json")
+const fs=require("fs")
+function getcontactsfromfile(cb)
+{
+    fs.readFile(p,(err,filecontent)=>{
+        if(err)
+        {
+         cb([])
+        }
+        else{
+            cb(JSON.parse(filecontent))
+        }
+    })
+}
 module.exports=class contact {
     constructor (n,e) {
         this.name=n
@@ -6,10 +21,15 @@ module.exports=class contact {
     }
     save()
     {
-        contacts.push(this)
+        getcontactsfromfile(contacts=>{
+            contacts.push(this)
+            fs.writeFile(p,JSON.stringify(contacts),err=>{
+                console.log(err)
+            })
+        })
     }
-    static fetchall()
+    static fetchall(cb)
     {
-        return contacts;
+        getcontactsfromfile(cb)
     }
 }
