@@ -1,0 +1,23 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/contact.css">
+</head>
+
+<body>
+    <%- include('includes/navigation.ejs') %>
+
+    <main>
+        <div class="container">
+            <h3>Book a call</h3>
+            <p>Book a call and our representative will call you in 1hr</p>
+            <form class="contact-form" action="/success" method="post">
+                <div class="form-control">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="Submit">Get a Call</button>
+            </form>
+        </div>
+    </main>
+    <%-include('includes/end.ejs')%>
