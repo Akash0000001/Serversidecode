@@ -14,9 +14,11 @@ function getproductsfromfile(cb){
     })
 }
 module.exports=class product {
-    constructor (n,s) {
-        this.name=n
-        this.size=s;
+    constructor (t,i,d,p) {
+        this.title=t
+        this.price=p;
+        this.imageUrl=i;
+        this.description=d;
     }
     save()
     {   
@@ -27,7 +29,7 @@ module.exports=class product {
             })    
         })
     }
-    static fetchall(cb)
+    static fetchAll(cb)
     {
         getproductsfromfile(cb)   
     }

@@ -1,7 +1,7 @@
 const express = require("express");
-const routes = express.Router();
+const router = express.Router();
 
 const successcontroller=require("../controllers/success")
 
-routes.get("/",successcontroller)
-module.exports=routes
+router.get("/",successcontroller)
+module.exports=router

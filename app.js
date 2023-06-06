@@ -19,7 +19,7 @@ app.set('views', 'views');
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(express.static(path.join(rootDir,"public")))
 app.use("/admin",admin)
-app.use("/shop",shop)
+app.use(shop)
 app.use("/contactus",contact)
 app.use("/success",success)
 app.use(errorcontroller)

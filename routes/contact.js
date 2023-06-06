@@ -1,10 +1,10 @@
 const express = require("express");
 
-const routes = express.Router();
+const router = express.Router();
 
 const contactcontroller =require("../controllers/contact.js")
 
-routes.get("/",contactcontroller.precontact)
-routes.post("/",contactcontroller.postcontact)
+router.get("/",contactcontroller.precontact)
+router.post("/",contactcontroller.postcontact)
 
-module.exports=routes
+module.exports=router
