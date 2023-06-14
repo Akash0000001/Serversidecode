@@ -1,19 +1,5 @@
-const rootDir=require("../util/path")
 const Cart=require("./cart")
-const path=require("path")
-const p=path.join(rootDir,"data","product.json")
-const fs=require("fs")
-function getproductsfromfile(cb){
-    fs.readFile(p,(err,filecontent)=>{
-        if(err)
-        {
-            cb([])
-        }
-        else{
-        cb(JSON.parse(filecontent))
-        }
-    })
-}
+const db=require("../util/database")
 module.exports=class product {
     constructor (id,t,i,p,d) {
         this.id=id
@@ -23,49 +9,23 @@ module.exports=class product {
         this.description=d;
     }
     save()
-    {   getproductsfromfile(products=>{
-        if(this.id)
-        {
-            const prodIndex=products.findIndex(p=>p.id===this.id)
-            products[prodIndex]=this
-            fs.writeFile(p,JSON.stringify(products),err=>{
-                console.log(err);
-        }
-    )
-    }
-    else
-        {
-            this.id=Math.random().toString();
-            products.push(this)
-            fs.writeFile(p,JSON.stringify(products),err=>{
-                console.log(err);
-            })    
-    }
-})
-}       
-    static fetchAll(cb)
-    {
-        getproductsfromfile(cb)   
+    {  if(!this.id)
+        return  db.execute("INSERT INTO products (title,price,description,imageUrl) VALUES(?,?,?,?)",[this.title,this.price,this.description,this.imageUrl])
+       else
+        return db.execute(`UPDATE products  SET title=?,price=?,description=?,imageUrl=? where id=${this.id} `,[this.title,this.price,this.description,this.imageUrl])
     }
 
-    static findbyid(id,cb)
+    static fetchAll()
     {
-        getproductsfromfile(products=>{
-            const prod=products.find(p => p.id===id)
-            cb(prod)
-        })
+        return db.execute('SELECT * FROM products')
     }
+
+    static findbyid(id)
+    {
+        return db.execute("SELECT * FROM products WHERE id=?",[id])
+    }   
     static deletebyid(id)
     {
-        getproductsfromfile(products=>{
-            const product=products.find(p=>p.id===id)
-            const updatedproducts=products.filter(p=>p.id!==id)
-            fs.writeFile(p,JSON.stringify(updatedproducts),err=>{
-                if(!err)
-                {
-                    Cart.deleteproduct(id,product.price)
-                }
-            }) 
-        })
+        return db.execute('Delete FROM products WHERE id=? ',[id])
     }
 }
