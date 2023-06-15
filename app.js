@@ -11,9 +11,8 @@ const success=require("./routes/success")
 const rootDir=require("./util/path")
 const errorcontroller=require("./controllers/error")
 
-const db=require("./util/database")
 
-db.execute('SELECT * FROM products')
+const sequelize=require("./util/database")
 
 const app= express()
 app.set('view engine', 'ejs');
@@ -28,8 +27,12 @@ app.use("/contactus",contact)
 app.use("/success",success)
 app.use(errorcontroller)
 
-
-app.listen(3000)
+sequelize.sync()
+.then(result=>{
+    //console.log(result)
+    app.listen(3000)
+})
+.catch(err=>console.log(err))
 
 
 
